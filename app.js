@@ -18,8 +18,9 @@ const app = new App({
 
 app.use(express.urlencoded({ extended: false}))
 
-receiver.router.post('/weather', (req, res) => {
+receiver.router.post('/jumo_weather', (req, res) => {
   city = encodeURIComponent(req.body.city);
+  city = "cape town";
   requestify.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${process.env.APPID}&units=metric`)
   .then(function(result) {
       res.send(result.getBody().main)
